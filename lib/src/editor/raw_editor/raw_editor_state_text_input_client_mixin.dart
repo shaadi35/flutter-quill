@@ -83,7 +83,13 @@ mixin RawEditorStateTextInputClientMixin on EditorState
           inputType: TextInputType.multiline,
           readOnly: widget.config.readOnly,
           inputAction: widget.config.textInputAction,
-          enableSuggestions: !widget.config.readOnly,
+          // NoteVault fork: read autocorrect/enableSuggestions from config so
+          // the app can disable the keyboard's autocorrect + spell-check
+          // (composing underline). Defaults keep upstream behavior; suggestions
+          // are still force-disabled while read-only. See PATCH_README.md.
+          autocorrect: widget.config.autocorrect,
+          enableSuggestions:
+              widget.config.enableSuggestions && !widget.config.readOnly,
           keyboardAppearance: createKeyboardAppearance(),
           textCapitalization: widget.config.textCapitalization,
           allowedMimeTypes: widget.config.contentInsertionConfiguration == null
