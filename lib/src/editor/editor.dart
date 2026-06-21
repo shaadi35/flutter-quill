@@ -296,6 +296,10 @@ class QuillEditorState extends State<QuillEditor>
           opacityAnimates: cursorOpacityAnimates,
         ),
         textCapitalization: config.textCapitalization,
+        // NoteVault fork: forward autocorrect/enableSuggestions to the raw
+        // editor so the app's toggle reaches the TextInputConfiguration.
+        autocorrect: config.autocorrect,
+        enableSuggestions: config.enableSuggestions,
         minHeight: config.minHeight,
         maxHeight: config.maxHeight,
         maxContentWidth: config.maxContentWidth,

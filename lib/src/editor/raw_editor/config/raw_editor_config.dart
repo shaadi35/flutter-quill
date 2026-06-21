@@ -43,6 +43,9 @@ class QuillRawEditorConfig {
     this.contextMenuBuilder = defaultContextMenuBuilder,
     this.showSelectionHandles = false,
     this.textCapitalization = TextCapitalization.none,
+    // NoteVault fork: see PATCH_README.md. Defaults reproduce upstream.
+    this.autocorrect = true,
+    this.enableSuggestions = true,
     this.maxHeight,
     this.minHeight,
     this.maxContentWidth,
@@ -264,6 +267,15 @@ class QuillRawEditorConfig {
   ///
   ///  * [TextCapitalization], for a description of each capitalization behavior
   final TextCapitalization textCapitalization;
+
+  /// NoteVault fork: keyboard autocorrect on/off. Defaults to `true`
+  /// (upstream omitted it, so it defaulted to true). See PATCH_README.md.
+  final bool autocorrect;
+
+  /// NoteVault fork: keyboard spell-check suggestions / composing underline.
+  /// Defaults to `true`; still force-disabled while read-only by the input
+  /// client mixin. See PATCH_README.md.
+  final bool enableSuggestions;
 
   /// The maximum height this editor can have.
   ///
